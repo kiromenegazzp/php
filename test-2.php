@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 <head>
-    <meta charset="UTF-8">
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1'>
+    <title>Title</title>
 </head>
 <body>
 <?php
@@ -17,27 +19,31 @@ function str_gen($n, $k){
         }
         $arr[$j] = $string;
     }
-
     var_dump($arr);
 
-    function str_array($arr){
-        $result = [];
-        for($n = 0; $n < count($arr); $n++){
-            $str = $arr[$n];
-            $result[$str] = true;
-        }
-        var_dump($result);
-
-    }
-
     str_array($arr);
-    //array_walk($arr, 'str_array');
 }
 
-str_gen(3, 3);
-
-
-
+function str_array($ar){
+    $res = '';
+    for($n = 0; $n < count($ar); $n++){
+        $str = $ar[$n];
+        $counter = 0;
+        for($k = 0; $k < count($ar); $k++) {
+            if($str == $ar[$k]){
+                $counter++;
+            }
+        }
+        if($counter > 1){
+            $res .= $str . ' ' . $counter . ' ' ;
+        }
+        $ar = array_diff($ar, [$str]);
+        sort($ar);
+        $n--;
+    }
+    echo $res;
+}
+    str_gen(3, 3);
 
 ?>
 </body>
