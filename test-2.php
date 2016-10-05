@@ -21,29 +21,28 @@ function str_gen($n, $k){
     }
     var_dump($arr);
 
-    str_array($arr);
+    rep_find($arr);
 }
 
-function str_array($ar){
+function rep_find($ar){
     $res = '';
     for($n = 0; $n < count($ar); $n++){
-        $str = $ar[$n];
         $counter = 0;
         for($k = 0; $k < count($ar); $k++) {
-            if($str == $ar[$k]){
+            if($ar[$n] == $ar[$k]){
                 $counter++;
             }
         }
         if($counter > 1){
-            $res .= $str . ' ' . $counter . ' ' ;
+            $res .= $ar[$n] . ' ' . $counter . ' ' ;
         }
-        $ar = array_diff($ar, [$str]);
+        $ar = array_diff($ar, [$ar[$n]]);
         sort($ar);
         $n--;
     }
     echo $res;
 }
-    str_gen(3, 3);
+    str_gen(5, 3);
 
 ?>
 </body>
