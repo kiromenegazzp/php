@@ -1,23 +1,14 @@
-<!DOCTYPE html>
-<html lang='en'>
-<head>
-    <meta charset='UTF-8'>
-    <meta name='viewport' content='user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1'>
-    <title>Title</title>
-</head>
-<body>
 <?php
-
 function str_gen($n, $k){
     $arr = [];
     //$alphabet = "abcdefghijklmnopqrstuvwxyz0123456789";
     $alphabet = "ab";
-    for($j = 0; $j < $n; $j++){
+    for($i = 0; $i < $n; $i++){
         $string = '';
-        for ($i = 0; $i < $k; $i++){
+        for ($j = 0; $j < $k; $j++){
             $string .= $alphabet[rand(0, strlen($alphabet) - 1)];
         }
-        $arr[$j] = $string;
+        $arr[$i] = $string;
     }
     var_dump($arr);
 
@@ -26,24 +17,21 @@ function str_gen($n, $k){
 
 function rep_find($ar){
     $res = '';
-    for($n = 0; $n < count($ar); $n++){
+    for($t = 0; $t < count($ar); $t++){
         $counter = 0;
-        for($k = 0; $k < count($ar); $k++) {
-            if($ar[$n] == $ar[$k]){
+        for($p = 0; $p < count($ar); $p++) {
+            if($ar[$t] == $ar[$p]){
                 $counter++;
             }
         }
         if($counter > 1){
-            $res .= $ar[$n] . ' ' . $counter . ' ' ;
+            $res .= $ar[$t] . ' ' . $counter . ' ' ;
         }
-        $ar = array_diff($ar, [$ar[$n]]);
+        $ar = array_diff($ar, [$ar[$t]]);
         sort($ar);
-        $n--;
+        $t--;
     }
     echo $res;
 }
     str_gen(5, 3);
-
 ?>
-</body>
-</html>
