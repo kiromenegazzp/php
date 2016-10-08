@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-</head>
-<body>
 <?php
+
+/*
+Написать скрипт, который заданное слово переворачивает задом-на-перед,
+ учесть возможность ввода русских слов, для этого изучить мультибайтные
+функции работы со строками начинающиеся на mb_
+*/
 
 $string ="Россия";
 
@@ -24,5 +24,3 @@ function mb_strrev ($string, $encoding = null) {
 }
 echo mb_strrev($string);
 ?>
-</body>
-</html>
