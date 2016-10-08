@@ -7,41 +7,40 @@ e.	Реализовать класс Man и Woman наследующие кла�
 
 */
 
-
-
     class People {
+        CONST GENDER_MALE   = 1;
+        CONST GENDER_FEMALE = 2;
 
         public $coordX = 0;
         public $coordY = 0;
+        public $gender = self::GENDER_MALE;
 
-        public function jump($coordX, $coordY){
-            $coordX += 10;
-            $coordY += 10;
-            return $coordX . ' :  ' . $coordY;
+        public function jump(){
+            //Не надо в метод ничего передавать, прыжок и ходьба - без прараметров,
+            //Так же САМОЕ ГЛАВНОЕ - ты должен менять значения в текущем классе, а у тебя это сейчас просто как функция работала
+            $this->coordX += 10;
+            $this->coordY += 10;
         }
 
-        public function walk($coordX){
-            $coordX += 10;
-            return $coordX;
+        public function walk(){
+            $this->coordX += 10;
         }
     }
 
     class Man extends People{
-
-        public static $gender = 'male';
-
+        //Нет нужды в статичном свойстве
+        public $gender = People::GENDER_MALE;
     }
 
 
     class Woman extends People{
-
-        public static $gender = 'female';
+        public $gender = People::GENDER_FEMALE;
     }
 
-
     $man = new Man();
-    echo $man->walk($man->coordX) . PHP_EOL;
-    echo $man->jump($man->coordX, $man->coordY);
-    echo $man::$gender;
+    $man->walk();
+    $man->walk();
+    $man->walk();
+    echo($man->coordX);
 
-?>
+//Не обязательно писать закрывающий тег - и никто уже его не пишет
