@@ -1,26 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
 <?php
 
-/*
-Написать скрипт, который заданное слово переворачивает задом-на-перед,
- учесть возможность ввода русских слов, для этого изучить мультибайтные
-функции работы со строками начинающиеся на mb_
-*/
+$string = "Россия";
+$reverse = '';
 
-$string ="Россия";
-
-function mb_strrev ($string, $encoding = null) {
-    if ($encoding === null) {
-        $encoding = mb_detect_encoding($string);
-    }
-
-    $length   = mb_strlen($string, $encoding);
-    $reversed = '';
-    while ($length > -1) {
-        $reversed .= mb_substr($string, $length, 1, $encoding);
-        $length--;
-    }
-
-    return $reversed;
+for($j = mb_strlen($string) - 1; $j > -1; $j--){
+    $reverse .= mb_substr($string, $j, 1, mb_detect_encoding($string));
 }
-echo mb_strrev($string);
+echo $reverse;
+
 ?>
+</body>
+</html>
