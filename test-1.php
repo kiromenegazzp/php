@@ -1,9 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-</head>
-<body>
 <?php
 
 $string = "Россия";
@@ -15,5 +9,3 @@ for($j = mb_strlen($string) - 1; $j > -1; $j--){
 echo $reverse;
 
 ?>
-</body>
-</html>
